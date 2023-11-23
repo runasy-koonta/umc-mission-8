@@ -1,5 +1,6 @@
 import express from 'express';
 import { tempRouter } from './routes/temp.route.js';
+import { response } from "./config/response.js";
 
 const app = express();
 const port = 3000;
@@ -7,8 +8,9 @@ const port = 3000;
 app.use('/temp', tempRouter);
 
 app.use((err, req, res, next) => {
-    console.error(err.stack)
-    res.status(500).send(err.stack);
+    res.locals.message = err.message;
+    res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
+    res.status(err.data.status).send(response(err.data));
 });
 
 app.listen(port, () => {
