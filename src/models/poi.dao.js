@@ -36,3 +36,32 @@ export const getPoi = async (data) => {
         throw new BaseError(status.INTERNAL_SERVER_ERROR);
     }
 }
+
+export const addReview = async (data) => {
+    try {
+        const conn = await pool.getConnection();
+
+        const result = await pool.query(`INSERT INTO review(poi_id, star, content) VALUES(?, ?, ?)`, [data.poi_id, data.star, data.content]);
+        const reviewId = result.insertId;
+
+        await conn.release();
+
+        return reviewId;
+    } catch (err) {
+        throw new BaseError(status.INTERNAL_SERVER_ERROR);
+    }
+}
+
+export const getReview = async (data) => {
+    try {
+        const conn = await pool.getConnection();
+
+        const result = await pool.query(`SELECT * FROM review WHERE review_id = ?`, [data.review_id]);
+
+        await conn.release();
+
+        return result[0];
+    } catch (err) {
+        throw new BaseError(status.INTERNAL_SERVER_ERROR);
+    }
+}

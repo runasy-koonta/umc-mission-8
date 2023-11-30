@@ -3,4 +3,5 @@ import { poiAdd } from "../controllers/poi.controller.js";
 
 export const poiRouter = express.Router();
 
-poiRouter.post('/add', poiAdd);
+poiRouter.post('/', poiAdd);
+poiRouter.post('/:poiId/review', poiAddReview);

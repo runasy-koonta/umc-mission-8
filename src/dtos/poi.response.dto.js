@@ -10,3 +10,13 @@ export const addPoiResponseDTO = (data) => {
         "poi_close_time": data.poi_close_time
     };
 };
+
+export const addReviewResponseDTO = (data) => {
+    return {
+        "review_id": data.review_id,
+        "poi_id": data.poi_id,
+        "star": data.star,
+        "content": data.content,
+        "created_at": data.created_at
+    };
+}
