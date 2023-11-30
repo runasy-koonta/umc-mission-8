@@ -3,11 +3,13 @@ import { tempRouter } from './routes/temp.route.js';
 import { response } from "./config/response.js";
 import { status } from "./config/response.status.js";
 import { BaseError } from "./config/error.js";
+import {poiRouter} from "./routes/poi.route.js";
 
 const app = express();
 const port = 3000;
 
 app.use('/temp', tempRouter);
+app.use('/poi', poiRouter);
 
 app.use((req, res, next) => {
     const err = new BaseError(status.NOT_FOUND);
