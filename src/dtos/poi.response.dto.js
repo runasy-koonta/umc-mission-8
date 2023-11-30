@@ -20,3 +20,11 @@ export const addReviewResponseDTO = (data) => {
         "created_at": data.created_at
     };
 }
+
+export const doMissionResponseDTO = (data) => {
+    return {
+        "poi_id": data.poi_id,
+        "mission_id": data.mission_id,
+        "created_at": data.created_at
+    };
+}

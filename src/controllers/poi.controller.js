@@ -10,3 +10,7 @@ export const poiAdd = (req, res, next) => {
 export const poiAddReview = (req, res, next) => {
     res.send(response(status.SUCCESS, addPoiReviewData(addReviewDTO({ ...req.query, ...req.body }))));
 }
+
+export const poiDoMission = (req, res, next) => {
+    res.send(response(status.SUCCESS, doPoiMission(req.params.id, req.body)));
+}

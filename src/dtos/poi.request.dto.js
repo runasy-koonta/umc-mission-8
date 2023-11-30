@@ -27,3 +27,10 @@ export const addReviewDTO = (data) => {
         content: data.content,
     };
 }
+
+export const doMissionDTO = (data) => {
+    return {
+        poi_id: data.poi_id,
+        mission_id: data.mission_id,
+    };
+}

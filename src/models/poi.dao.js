@@ -65,3 +65,18 @@ export const getReview = async (data) => {
         throw new BaseError(status.INTERNAL_SERVER_ERROR);
     }
 }
+
+export const doMission = async (data) => {
+    try {
+        const conn = await pool.getConnection();
+
+        const result = await pool.query(`INSERT INTO mission(user_id, poi_id, mission_type_id) VALUES(?, ?, ?)`, [data.user_id, data.poi_id, data.mission_type_id]);
+        const missionId = result.insertId;
+
+        await conn.release();
+
+        return missionId;
+    } catch (err) {
+        throw new BaseError(status.INTERNAL_SERVER_ERROR);
+    }
+}
