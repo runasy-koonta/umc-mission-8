@@ -19,3 +19,11 @@ export const addPoiDTO = (data) => {
         poi_close_time: data.poi_close_time
     };
 }
+
+export const addReviewDTO = (data) => {
+    return {
+        poi_id: data.poi_id,
+        star: data.star,
+        content: data.content,
+    };
+}
